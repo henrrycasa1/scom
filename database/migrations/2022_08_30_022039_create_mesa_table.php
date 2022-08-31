@@ -15,7 +15,17 @@ return new class extends Migration
     {
         Schema::create('mesa', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('nombre');
+            $table->integer('min_capacidad');
+            $table->integer('max_capacidad');
+            $table->string('status');
+            $table->foreignId('id_orden');
+            $table->foreignId('id_camarero');
+            $table->foreignId('id_cliente')
+            ->constrained('orden')
+            ->constrained('camarero')
+            ->constrained('cliente')
+            ->cascadeOnUpdate();
         });
     }
 

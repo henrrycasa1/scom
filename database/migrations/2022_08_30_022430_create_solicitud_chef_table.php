@@ -15,7 +15,12 @@ return new class extends Migration
     {
         Schema::create('solicitud_chef', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('cantidad');
+            $table->string('status');
+            $table->date('fecha', $precision = 0);
+            $table->foreignId('id_chef')
+            ->constrained('chef')
+            ->cascadeOnUpdate();
         });
     }
 

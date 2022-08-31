@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('bebidas', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('grado_alcoholico');
+            $table->foreignId('id_producto')
+            ->constrained('productos')
+            ->cascadeOnUpdate();
         });
     }
 

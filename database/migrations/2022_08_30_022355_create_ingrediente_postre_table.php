@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('ingrediente_postre', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('id_postres')
+            ->constrained('postres')
+            ->cascadeOnUpdate();
         });
     }
 

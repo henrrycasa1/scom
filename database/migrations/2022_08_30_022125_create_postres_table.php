@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('postres', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('tiempo_elaboracion');
+            $table->foreignId('id_producto')
+            ->constrained('productos')
+            ->cascadeOnUpdate();
         });
     }
 

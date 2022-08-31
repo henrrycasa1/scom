@@ -15,7 +15,15 @@ return new class extends Migration
     {
         Schema::create('factura', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('total');
+            $table->date('fecha', $precision = 0);
+            $table->foreignId('id_cajero');
+            $table->foreignId('id_orden');
+            $table->foreignId('id_cliente')
+            ->constrained('cajero')
+            ->constrained('orden')
+            ->constrained('cliente')
+            ->cascadeOnUpdate();
         });
     }
 
